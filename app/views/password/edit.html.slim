@@ -1,2 +1,16 @@
-h1 Please choose a new password
-p The code is #{@code}
+.row
+    .col-lg-4.col-lg-offset-4
+        h1 Please choose a new password
+        .row
+            .col-lg-9
+                = form_for :user, url: reset_url, method: :put, html: {role: "form" } do |f|
+                    .form-group
+                        = f.label :password
+                        = f.password_field :password, class: "form-control", placeholder: "Password"
+                    .form-group
+                        = f.label :password_confirmation
+                        = f.password_field :password_confirmation, class: "form-control", placeholder: "Re-type Password"
+                    .form-group
+                        = token_tag form_authenticity_token
+                        => f.submit "Save", class: "btn btn-success"
+                        => f.button "Show Passwords", class: "btn btn-warning"

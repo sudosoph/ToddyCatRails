@@ -14,3 +14,9 @@ gem 'puma'
 gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'bson_ext'
 gem 'mongoid', github: 'mongoid/mongoid', ref: 'f91feef'
+
+group :development, :test do |variable|
+	gem 'launchy'
+	gem 'better_errors'
+	gem 'binding_of_caller'
+end
