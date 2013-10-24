@@ -5,7 +5,7 @@ class User
 	attr_accessor :password, :password_confirmation
 
 	field :id, type: String
-	
+
 	field :name, type: String
 	field :email, type: String
 
@@ -16,6 +16,10 @@ class User
 	field :expires_at, type: String
 
 	before_save :encrypt_password
+
+	def authenticate(password)
+		self.pwd == BCrypt::Engine.hash_secret(password, self.pwd)
+	end
 
 	private
 
